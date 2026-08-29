@@ -1,0 +1,6 @@
+{
+  "name": "FloraSense - Arduino Bluetooth & Plant Twitter Monitor",
+  "description": "Monitoramento em tempo real de sensores de solo Arduino via Bluetooth (Web Bluetooth), gráficos intuitivos e históricos semanais, alertas de celular, suporte a múltiplas plantas e tweets automáticos da planta pedindo água.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
