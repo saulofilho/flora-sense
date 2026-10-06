@@ -111,7 +111,10 @@ export const GITHUB_ACTIONS_WORKFLOW = `name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - master
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -127,10 +130,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build Static Applet
         run: npm run build
