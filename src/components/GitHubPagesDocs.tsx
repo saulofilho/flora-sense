@@ -168,6 +168,15 @@ export const GitHubPagesDocs: React.FC<GitHubPagesDocsProps> = ({ isOpen, onClos
     link.click();
   };
 
+  const handleDownloadWorkflow = () => {
+    const blob = new Blob([GITHUB_ACTIONS_WORKFLOW], { type: 'text/yaml;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'deploy.yml';
+    link.click();
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto">
       <div className="relative w-full max-w-3xl bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6 my-8">
@@ -196,14 +205,14 @@ export const GitHubPagesDocs: React.FC<GitHubPagesDocsProps> = ({ isOpen, onClos
         </div>
 
         {/* Quick Instructions Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
             <div className="flex items-center space-x-2 text-xs font-bold text-emerald-400">
               <Globe className="w-4 h-4" />
               <span>Publicação no GitHub Pages</span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              O projeto é 100% estático (Single Page Application com Web Bluetooth). Ele pode ser hospedado gratuitamente no GitHub Pages sem nenhum servidor backend necessário.
+              O projeto é 100% estático (Vite SPA com Web Bluetooth). Pode ser hospedado gratuitamente no GitHub Pages sem nenhum servidor backend.
             </p>
           </div>
 
@@ -213,7 +222,17 @@ export const GitHubPagesDocs: React.FC<GitHubPagesDocsProps> = ({ isOpen, onClos
               <span>GitHub Actions Automático</span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Basta salvar o arquivo <code className="text-cyan-300 font-mono">.github/workflows/deploy.yml</code> no seu repositório para publicar automaticamente a cada push na branch main.
+              Arquivo <code className="text-cyan-300 font-mono">.github/workflows/deploy.yml</code> configurado para compilar e publicar a cada push na main.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+            <div className="flex items-center space-x-2 text-xs font-bold text-amber-400">
+              <CheckCircle2 className="w-4 h-4" />
+              <span>Ícone & Favicon SVG</span>
+            </div>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Ícone botânico configurado em <code className="text-amber-300 font-mono">public/favicon.svg</code> com tags de favicon, apple-touch-icon e manifest.
             </p>
           </div>
         </div>
@@ -258,13 +277,23 @@ export const GitHubPagesDocs: React.FC<GitHubPagesDocsProps> = ({ isOpen, onClos
               <span>Workflow GitHub Actions (.github/workflows/deploy.yml)</span>
             </span>
 
-            <button
-              onClick={handleCopyWorkflow}
-              className="flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition-all"
-            >
-              {copiedType === 'workflow' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-              <span>{copiedType === 'workflow' ? 'Copiado!' : 'Copiar Workflow YAML'}</span>
-            </button>
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={handleCopyWorkflow}
+                className="flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition-all"
+              >
+                {copiedType === 'workflow' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                <span>{copiedType === 'workflow' ? 'Copiado!' : 'Copiar Workflow YAML'}</span>
+              </button>
+
+              <button
+                onClick={handleDownloadWorkflow}
+                className="flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold shadow-md transition-all"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>Baixar deploy.yml</span>
+              </button>
+            </div>
           </div>
 
           <div className="h-44 rounded-2xl bg-slate-950 border border-slate-800 p-4 font-mono text-xs text-cyan-300 overflow-y-auto leading-relaxed select-all">

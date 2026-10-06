@@ -1,0 +1,16 @@
+{
+  "name": "FloraSense - Arduino Bluetooth Plant Monitor",
+  "short_name": "FloraSense",
+  "description": "Monitoramento em tempo real de solo Arduino via Bluetooth, gráficos semanais e Twitter bot.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#10b981",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

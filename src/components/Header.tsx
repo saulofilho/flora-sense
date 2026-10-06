@@ -11,7 +11,8 @@ import {
   Plus, 
   Sparkles,
   RefreshCw,
-  SlidersHorizontal
+  SlidersHorizontal,
+  Globe
 } from 'lucide-react';
 import { BluetoothConnectionStatus } from '../types';
 
@@ -55,8 +56,8 @@ export const Header: React.FC<HeaderProps> = ({
           
           {/* Logo & Brand */}
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center shadow-lg shadow-emerald-950/40 text-2xl">
-              🌿
+            <div className="w-10 h-10 rounded-xl bg-slate-900 border border-emerald-500/40 p-1 flex items-center justify-center shadow-lg shadow-emerald-950/40 hover:border-emerald-400 transition-all">
+              <img src="./favicon.svg" alt="FloraSense" className="w-full h-full object-contain" />
             </div>
             <div>
               <div className="flex items-center space-x-2">
@@ -219,14 +220,15 @@ export const Header: React.FC<HeaderProps> = ({
               {soundEnabled ? <Volume2 className="w-4 h-4 text-emerald-400" /> : <VolumeX className="w-4 h-4" />}
             </button>
 
-            {/* GitHub Docs & README */}
+            {/* GitHub Docs & GitHub Pages */}
             <button
               id="btn-github-docs"
               onClick={onOpenGitHubDocsModal}
-              className="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-slate-300 hover:text-white transition-all"
-              title="README & Deploy GitHub Pages"
+              className="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-slate-300 hover:text-white transition-all text-xs font-semibold"
+              title="GitHub Pages & Documentação README"
             >
-              <BookOpen className="w-4 h-4 text-cyan-400" />
+              <Globe className="w-3.5 h-3.5 text-cyan-400" />
+              <span className="hidden xl:inline text-cyan-300">GitHub Pages</span>
             </button>
 
             {/* Add Plant Button */}
